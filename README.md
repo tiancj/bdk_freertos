@@ -81,7 +81,9 @@ After uf2 bootloader is flashed, press USER button before plug USB or press CEN 
 
 ## Documents
 
-v There are original Beken documents at `documents` directory, which includes SDK API and User Guide. SDK API is recommended to read to familiar with API that used to develope user applications. If you want to develop USB devices or Host devices, please refer CherryUSB APIs at https://cherryusb.readthedocs.io/.
+There are original Beken documents at `documents` directory, which includes SDK API and User Guide. SDK API is recommended to read to familiar with API that used to develope user applications. If you want to develop USB devices or Host devices, please refer CherryUSB APIs at https://cherryusb.readthedocs.io/.
+
+And Beken docs @ https://docs.bekencorp.com/sdk_3.0.x/bk7238/build/en/latest/index.html
 
 ## Contribution
 
