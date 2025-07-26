@@ -65,6 +65,8 @@ make bk7231u -j8
 
 uf2 bootloader is `out/beken7231u_crc.bin`，use `hidprogram` to flash.
 
+Or you can use prebuilt bootloader `tools/beken_packager/bootloader_bk7231u_uf2_crc.bin`.
+
 After uf2 bootloader is flashed, press USER button before plug USB or press CEN button. Then copy uf2 firmware to usb disk, uf2 bootloader will reboot after write firmware to flash automatically.
 
 ## Supported functions
