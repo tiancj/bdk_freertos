@@ -802,6 +802,7 @@ int usbd_ep_start_read(const uint8_t ep, uint8_t *data, uint32_t data_len)
     if (ep_idx == 0) {
         usb_ep0_state = USB_EP0_STATE_OUT_DATA;
     } else {
+#if 0
         csr = HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET);
 
         while (csr & USB_RXCSRL1_RXRDY) {
@@ -829,6 +830,7 @@ int usbd_ep_start_read(const uint8_t ep, uint8_t *data, uint32_t data_len)
 #endif
         }
         // HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) = csr;
+#endif
 
         HWREGB(USB_BASE + MUSB_RXIEL_OFFSET) |= (1 << ep_idx);
     }
@@ -1018,7 +1020,6 @@ void USBD_IRQHandler(void)
                 read_count = HWREGH(USB_BASE + MUSB_IND_RXCOUNT_OFFSET);
 
                 musb_read_packet(ep_idx, g_musb_udc.out_ep[ep_idx].xfer_buf, read_count);
-                HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) &= ~(USB_RXCSRL1_RXRDY);
 
                 g_musb_udc.out_ep[ep_idx].xfer_buf += read_count;
                 g_musb_udc.out_ep[ep_idx].actual_xfer_len += read_count;
@@ -1029,6 +1030,7 @@ void USBD_IRQHandler(void)
                     usbd_event_ep_out_complete_handler(ep_idx, g_musb_udc.out_ep[ep_idx].actual_xfer_len);
                 } else {
                 }
+                HWREGB(USB_BASE + MUSB_IND_RXCSRL_OFFSET) &= ~(USB_RXCSRL1_RXRDY);
             }
 
             rxis &= ~(1 << ep_idx);
