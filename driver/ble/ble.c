@@ -137,11 +137,13 @@ uint8 is_rf_switch_to_ble(void)
 void ble_switch_rf_to_wifi(void)
 {
     UINT32 reg;
+#if CFG_SUPPORT_BLE
     // if in ble dut mode, no need change back to wifi any more.
     // ble dut mode can not exit until power off
   //  if (!is_rf_switch_to_ble() || power_save_if_rf_sleep())
   	if (!is_rf_switch_to_ble())
         return;
+#endif
 
     GLOBAL_INT_DECLARATION();
     GLOBAL_INT_DISABLE();

@@ -86,6 +86,7 @@ static void flash_enable_cpu_data_wr(void)
     REG_WRITE(REG_FLASH_CONF, value);
 }
 
+#if (0 == CFG_JTAG_ENABLE)
 static void flash_disable_cpu_data_wr(void)
 {
     UINT32 value;
@@ -95,6 +96,7 @@ static void flash_disable_cpu_data_wr(void)
 
     REG_WRITE(REG_FLASH_CONF, value);
 }
+#endif
 
 static void flash_write_enable(void)
 {

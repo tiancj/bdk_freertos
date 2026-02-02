@@ -775,8 +775,10 @@ int usbd_ep_start_read(const uint8_t ep, uint8_t *data, uint32_t data_len)
 {
     uint8_t ep_idx = USB_EP_GET_IDX(ep);
     uint8_t old_ep_idx;
+#if 0
     uint8_t csr;
     uint16_t read_count;
+#endif
 
     if (!data && data_len) {
         return -1;

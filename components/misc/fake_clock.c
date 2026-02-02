@@ -20,7 +20,9 @@ static volatile UINT32 current_seconds = 0;
 static UINT32 second_countdown = FCLK_SECOND;
 #endif
 static BK_HW_TIMER_INDEX fclk_id = BK_PWM_TIMER_ID0;
+#if CFG_USE_TICK_CAL
 static CAL_TICK_T cal_tick_save;
+#endif
 UINT32 use_cal_net = 0;
 
 extern void mcu_ps_increase_clr(void);
